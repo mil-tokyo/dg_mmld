@@ -1,5 +1,5 @@
 # Domain Generalization Using a Mixture of Multiple Latent Domains
-![model](https://github.com/mil-tokyo/dg_mmld/files/3835034/model.pdf)
+![model](https://user-images.githubusercontent.com/22876486/68654944-64933100-0572-11ea-8cd0-2ff148ca1843.png)
 This is the pytorch implementation of the AAAI 2020 poster paper "Domain Generalization Using a Mixture of Multiple Latent Domains".
 The code will be released soon.
 
