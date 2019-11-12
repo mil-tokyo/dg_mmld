@@ -23,5 +23,5 @@ bash deepall.sh
 You can set the correct parameter.
 - --data-root: the dataset folder path
 - --save-root: the folder path for saving the results
-- --gpu: the gnu id to run experiments
+- --gpu: the gpu id to run experiments
  
