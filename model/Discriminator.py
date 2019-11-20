@@ -4,22 +4,21 @@ import torch.utils.model_zoo as model_zoo
 import torch
 
 class GradReverse(torch.autograd.Function):
-    def __init__(self, lambd, reverse=True):
-        super(GradReverse, self).__init__()
-        self.lambd = lambd
-        self.reverse=reverse
-        
-    def forward(self, x):
+    @staticmethod
+    def forward(ctx, x, lambd, reverse=True):
+        ctx.lambd = lambd
+        ctx.reverse=reverse
         return x.view_as(x)
-
-    def backward(self, grad_output):
-        if self.reverse:
-            return (grad_output * -self.lambd)
+    
+    @staticmethod
+    def backward(ctx, grad_output):
+        if ctx.reverse:
+            return (grad_output * -ctx.lambd), None, None
         else:
-            return(grad_output * self.lambd)
+            return (grad_output * ctx.lambd), None, None
 
 def grad_reverse(x, lambd=1.0, reverse=True):
-    return GradReverse(lambd, reverse)(x)
+    return GradReverse.apply(x, lambd, reverse)
 
 class Discriminator(nn.Module):
     def __init__(self, dims, grl=True, reverse=True):
