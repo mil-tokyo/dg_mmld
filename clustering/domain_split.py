@@ -92,7 +92,7 @@ def domain_split(dataset, model, device, cluster_before, filename, epoch, nmb_cl
     domain_nmi = normalized_mutual_info_score(
         cluster_list, dataloader.dataset.domains, average_method='geometric')
     before_nmi = normalized_mutual_info_score(
-        cluster_list, cluster_before, average_method='arithmetic')
+        cluster_list, cluster_before, average_method='geometric')
     
     log = 'Epoch: {}, NMI against class labels: {:.3f}, domain labels: {:.3f}, previous assignment: {:.3f}'.format(epoch, class_nmi, domain_nmi, before_nmi)
     print(log)
