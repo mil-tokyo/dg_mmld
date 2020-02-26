@@ -43,7 +43,7 @@ class AlexNetCaffe(nn.Module):
         self.class_classifier = nn.Linear(4096, num_classes)
 
     def forward(self, x, lambda_val=0):
-        x = self.features(x*57.6)  
+        x = self.features(x*57.6)
         #57.6 is the magic number needed to bring torch data back to the range of caffe data, based on used std
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
@@ -57,7 +57,7 @@ def caffenet(num_classes, num_domains=None, pretrained=True):
             nn.init.constant_(m.bias, 0.)
 
     if pretrained:
-        state_dict = torch.load("/data/ugui0/matsuura/alexnet_caffe/alexnet_caffe.pth.tar")
+        state_dict = torch.load("/data/unagi0/matsuura/alexnet_caffe/alexnet_caffe.pth.tar")
         del state_dict["classifier.fc8.weight"]
         del state_dict["classifier.fc8.bias"]
         model.load_state_dict(state_dict, strict=False)
@@ -89,11 +89,11 @@ class DGcaffenet(nn.Module):
         for i, model in enumerate(self.base_model.features):
             if i==0:
                 x = model(x*57.6)
-            else:    
+            else:
                 x = model(x)
             if i in {5, 9}:
                 results.append(x)
-        return results    
+        return results
     
     def domain_features(self, x):
         for i, model in enumerate(self.base_model.features):
