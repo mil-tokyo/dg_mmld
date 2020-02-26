@@ -70,7 +70,7 @@ def arrange_clustering(images_lists):
         image_indexes.extend(images)
         pseudolabels.extend([cluster] * len(images))
     indexes = np.argsort(image_indexes)
-    return np.asarray(pseudolabels)[indexes]            
+    return np.asarray(pseudolabels)[indexes]
             
 
 def domain_split(dataset, model, device, cluster_before, filename, epoch, nmb_cluster=3, method='Kmeans', pca_dim=256, batchsize=128, num_workers=4, whitening=False, L2norm=False, instance_stat=True):
@@ -92,13 +92,13 @@ def domain_split(dataset, model, device, cluster_before, filename, epoch, nmb_cl
     domain_nmi = normalized_mutual_info_score(
         cluster_list, dataloader.dataset.domains, average_method='geometric')
     before_nmi = normalized_mutual_info_score(
-        cluster_list, cluster_before, average_method='geometric')
+        cluster_list, cluster_before, average_method='arithmetic')
     
     log = 'Epoch: {}, NMI against class labels: {:.3f}, domain labels: {:.3f}, previous assignment: {:.3f}'.format(epoch, class_nmi, domain_nmi, before_nmi)
     print(log)
     if filename:
-        with open(filename, 'a') as f: 
-            f.write(log + '\n') 
+        with open(filename, 'a') as f:
+            f.write(log + '\n')
         
     mapping = reassign(cluster_before, cluster_list)
     cluster_reassign = [cluster_method.images_lists[mapp] for mapp in mapping]

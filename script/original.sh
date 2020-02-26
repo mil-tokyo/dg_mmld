@@ -11,21 +11,21 @@ do
     dir_name="PACS/default/${domain[j]}${i}"
     echo $dir_name
     python ../main/main.py \
-    --data-root='/data/ugui0/matsuura/PACS/raw_images/kfold/' \
-    --save-root='/data/ugui0/matsuura/DGDC/result/' \
+    --data-root='/data/unagi0/matsuura/PACS/raw_images/kfold/' \
+    --save-root='/data/unagi0/matsuura/DGDC/result/' \
     --result-dir=$dir_name \
     --train='general' \
     --data='PACS' \
     --model='caffenet' \
     --entropy='default' \
-    --exp-num=$j \    
+    --exp-num=$j \
     --gpu=0 \
     --num-epoch=30 \
     --scheduler='step' \
     --lr=1e-3 \
     --lr-step=24 \
     --lr-decay-gamma=0.1 \
-    --nesterov \    
+    --nesterov \
     --fc-weight=10.0 \
     --disc-weight=10.0 \
     --entropy-weight=1.0 \
@@ -34,4 +34,4 @@ do
     --color-jitter \
     --min-scale=0.8
     done
-done    
+done
