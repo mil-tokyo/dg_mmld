@@ -12,7 +12,7 @@ do
     echo $dir_name
     python ../main/main.py \
     --data-root='/data/unagi0/matsuura/PACS/raw_images/kfold/' \
-    --save-root='/data/unagi0/matsuura/DGDC/result/' \
+    --save-root='/data/unagi0/matsuura/result/dg_mmld/' \
     --result-dir=$dir_name \
     --train='general' \
     --data='PACS' \

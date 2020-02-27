@@ -15,7 +15,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     
     parser.add_argument('--data-root', default='/data/unagi0/matsuura/PACS/spilit/')
-    parser.add_argument('--save-root', default='/data/unagi0/matsuura/DGDC/result/')
+    parser.add_argument('--save-root', default='/data/unagi0/matsuura/result/dg_mmld')
     parser.add_argument('--result-dir', default='default')
     parser.add_argument('--train', default='deepall')
     parser.add_argument('--data', default='PACS')

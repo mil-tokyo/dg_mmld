@@ -57,7 +57,7 @@ def caffenet(num_classes, num_domains=None, pretrained=True):
             nn.init.constant_(m.bias, 0.)
 
     if pretrained:
-        state_dict = torch.load("/data/unagi0/matsuura/alexnet_caffe/alexnet_caffe.pth.tar")
+        state_dict = torch.load("/data/unagi0/matsuura/model/alexnet_caffe.pth.tar")
         del state_dict["classifier.fc8.weight"]
         del state_dict["classifier.fc8.bias"]
         model.load_state_dict(state_dict, strict=False)
